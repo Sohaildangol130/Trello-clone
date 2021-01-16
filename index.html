@@ -12,9 +12,6 @@
 </head>
 
 <style>
-    .main-container{
-    }
-    
     .main-container>div{
         min-width:18rem;
         height: 89vh;
@@ -26,26 +23,12 @@
         <div class="container-fluid mx-auto">
             <h1 class="text-4xl font-bold">Trello</h1>
             <div class="main-container flex mt-4 overflow-x-auto">
-                <div class="main-container__todo-list">
-                    <div class="todo-list bg-gray-200 p-2 mr-2">
-                        <div class="todo-list__title p-2 flex items-center justify-between">
-                            <p>Weekly Tasks</p>
-                            <i class="fas fa-ellipsis-h"></i>
-                        </div>
-                        <div class="todo-list__all-todos">
-                            <div class="all-todos__single-todo"></div>
-                        </div>
-                        <div class="todo-list__add-todo-btn">
-                            <button class="hover:bg-gray-300 w-full p-2">
-                                <p>+ Add another list</p>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="main-container__add-new-list w-72">
+                
+                <div class="main-container__add-new-list w-72">                    
                     <button class="bg-gray-900 add-new-list__add-btn px-4 py-3 w-full rounded-md relative">
                         <p class="text-white">Add new</p>
                     </button>
+
                     <div class="p-1 add-new-list__main-container bg-gray-400 hidden">
                         <input type="text" name="" id="" class="p-2 border-2 border-black w-full rounded-md main-container__title-input">
                         <div class="flex mt-1">
@@ -63,23 +46,60 @@
     </div> 
     
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.loadtemplate/1.5.10/jquery.loadTemplate.min.js" integrity="sha512-T1zx+UG2gXu9mr29wvzaKkNUmAOAie40T32ZPIvcRPJgO5br53+Ocqj8gzguUuix7FK+Z3ncRCJMaZcumnPZzg==" crossorigin="anonymous"></script>
     <script>
-        const $add_new_list__add_btn = $('.add-new-list__add-btn');
-        const $main_container__close_btn = $('.main-container__close-btn');
-        const $main_container__add_btn = $('.main-container__add-btn');
+        const $main_container = $('.main-container');
+
+        const $add_new_list__add_btn = $('.add-new-list__add-btn');        
+        const $add_new_list__main_container__close_btn = $('.add-new-list__main-container .main-container__close-btn');
+        const $add_new_list__main_container__add_btn = $('.add-new-list__main-container .main-container__add-btn');
+        const $add_new_list__main_container = $('.add-new-list__main-container');     
 
         $add_new_list__add_btn.click(function(){
-           $('.add-new-list__main-container').toggleClass('hidden');
+            $add_new_list__main_container.toggleClass('hidden');
            $($add_new_list__add_btn).toggleClass('hidden');
         })
 
-        $main_container__close_btn.click(function(){
-           $('.add-new-list__main-container').toggleClass('hidden');
+        $add_new_list__main_container__close_btn.click(function(){
+            $add_new_list__main_container.toggleClass('hidden');
            $($add_new_list__add_btn).toggleClass('hidden');
         })
 
-        $main_container__add_btn.click(function(){
-            
+        $add_new_list__main_container__add_btn.click(function(){
+            $main_container.prepend('<div class="main-container__todo-list"></div>');
+            $('.main-container__todo-list').loadTemplate('./todo-lists.html', {}, {
+                success: function(data){
+                    var title = $('.main-container__title-input').val();
+                    $('.todo-list__title p').text(title);
+                   // var title = $('.main-container__title-input').val();
+                   // let $main_container__todo_list = $('.main-container__todo-list')[0];
+                   // $($main_container__todo_list + '.todo-list__title p').text(title);
+                }
+            })
+           
+
+        })
+
+        const $todo_list__add_single_todo__add_btn = $('.add-single-todo__add-btn');
+        const $add_single_todo__main_container = $('.add-single-todo__main-container');
+        const $add_single_todo__main_container__add_btn = $('.add-single-todo__main-container .main-container__add-btn');
+        const $add_single_todo__main_container__close_btn = $('.add-single-todo__main-container .main-container__close-btn');
+        const $todo_list__all_todos = $('.todo-list__all-todos');
+
+        $todo_list__add_single_todo__add_btn.click(function(){
+            $add_single_todo__main_container.toggleClass('hidden');
+            $todo_list__add_single_todo__add_btn.toggleClass('hidden');
+        })
+
+        $add_single_todo__main_container__close_btn.click(function(){
+            $add_single_todo__main_container.toggleClass('hidden');
+            $todo_list__add_single_todo__add_btn.toggleClass('hidden');
+        })
+
+        $add_single_todo__main_container__add_btn.click(function(){
+            $todo_list__all_todos.prepend('<div class="all-todos__single-todo shadow-2xl px-4 py-2 bg-white mb-4"><p></p></div>');
+            var a = $('.add-single-todo__main-container .main-container__description').val();
+            $('.all-todos__single-todo p').text(a);
         })
     </script>
 </body>
