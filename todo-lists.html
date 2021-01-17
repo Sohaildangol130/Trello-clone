@@ -1,19 +1,19 @@
-<div class="todo-list bg-gray-200 p-2 mr-2">
+<div class="todo-list border-2 border-white rounded-md p-2 mr-2">
     <div class="todo-list__title p-2 flex items-center justify-between">
-        <p></p>
+        <p contentEditable="true"></p>
         <i class="fas fa-ellipsis-h"></i>
     </div>
     <div class="todo-list__all-todos">
     </div>
     <div class="todo-list__add-single-todo ">
-        <button class="add-single-todo__add-btn hover:bg-gray-300 w-full p-2">
+        <button class="add-single-todo__add-btn border-2 border-white w-full p-2">
             <p>+ Add another card</p>
         </button>
         <div class="p-1 add-single-todo__main-container hidden">
-            <textarea placeholder="Enter a title for this card..." class="h-24 p-2 w-full rounded-md main-container__description shadow-lg border-none"></textarea>
+            <textarea placeholder="Enter a title for this card..." class="h-24 p-2 w-full rounded-md main-container__description shadow-2xl border-2 border-white"></textarea>
             <div class="flex mt-1">
-                <button class="bg-gray-900 px-4 py-3 w-24 rounded-md main-container__add-btn">
-                    <p class="text-white">Add list</p>
+                <button class="bg-gray-800 hover:bg-gray-900 transition duration-300 px-4 py-3 w-28 rounded-md main-container__add-btn">
+                    <p class="text-white">Add card</p>
                 </button>
                 <button class="main-container__close-btn">
                     <p class="ml-4 text-4xl transform rotate-45">+</p>

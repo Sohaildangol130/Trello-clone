@@ -1,1 +1,53 @@
-@import 'animations';
+.wrapper{
+    background-image: url('/assets/images/bg.png');
+    background-size: cover;
+    height: 100vh;
+    padding: 0 20px;
+}
+.main-container>div{
+    min-width:18rem;
+    height: 89vh;        
+}
+input[type=text], textarea{
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.5);
+    transition: .2s all;
+
+    &:focus{
+        background-color: rgba(255, 255, 255, 1);
+    }
+}
+.main-container__add-new-list{
+    .add-new-list__add-btn{
+        background-color: rgba(255, 255, 255, 0.5);
+        transition: 0.3s all;
+
+        &:hover{
+            background-color: rgba(255, 255, 255, 1);
+        }
+    }
+}
+
+.main-container__todo-list{
+    .todo-list{
+        background-color: rgba(255, 255, 255, 0.5);
+        .todo-list__add-single-todo{
+            .add-single-todo__add-btn{
+                background-color: rgba(255, 255, 255, 0.5);
+                transition: 0.3s all;
+                &:hover{
+                    background-color: rgba(255, 255, 255, 1);
+                }
+            }
+        }
+
+        .all-todos__single-todo{
+            background-color: rgba(255, 255, 255, 0.5);
+                transition: 0.3s all;
+                &:hover{
+                    background-color: rgba(255, 255, 255, 1);
+                }
+        }
+    }
+
+}
