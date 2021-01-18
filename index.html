@@ -45,73 +45,8 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.12/lib/draggable.bundle.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.loadtemplate/1.5.10/jquery.loadTemplate.min.js" integrity="sha512-T1zx+UG2gXu9mr29wvzaKkNUmAOAie40T32ZPIvcRPJgO5br53+Ocqj8gzguUuix7FK+Z3ncRCJMaZcumnPZzg==" crossorigin="anonymous"></script>
-    <script>
-        const $main_container = $('.main-container');
-
-        const $add_new_list__add_btn = $('.add-new-list__add-btn');        
-        const $add_new_list__main_container__close_btn = $('.add-new-list__main-container .main-container__close-btn');
-        const $add_new_list__main_container__add_btn = $('.add-new-list__main-container .main-container__add-btn');
-        const $add_new_list__main_container = $('.add-new-list__main-container');     
-
-        $add_new_list__add_btn.click(function(){
-            toggle($add_new_list__main_container);
-            toggle($add_new_list__add_btn);
-        })
-
-        $add_new_list__main_container__close_btn.click(function(){          
-            toggle($add_new_list__main_container);
-            toggle($add_new_list__add_btn);
-        })
-
-        $add_new_list__main_container__add_btn.click(function(){
-            $main_container.prepend('<div class="main-container__todo-list"></div>');
-            $('.main-container__todo-list').loadTemplate('./todo-lists.html', {}, {
-                success: function(data){
-                    var title = $('.main-container__title-input').val();
-                    $('.todo-list__title p').text(title);
-                    const $todo_list__add_single_todo__add_btn = $('.add-single-todo__add-btn');
-
-                    const $add_single_todo__main_container = $('.add-single-todo__main-container');
-                    const $add_single_todo__main_container__add_btn = $('.add-single-todo__main-container .main-container__add-btn');
-                    const $add_single_todo__main_container__close_btn = $('.add-single-todo__main-container .main-container__close-btn');
-                    const $todo_list__all_todos = $('.todo-list__all-todos');
-
-                    $todo_list__add_single_todo__add_btn.click(function(){
-                        find_toggle(this, $add_single_todo__main_container);
-                        find_toggle(this, $todo_list__add_single_todo__add_btn);
-                    })
-
-                    $add_single_todo__main_container__close_btn.click(function(){
-                        find_toggle(this, $add_single_todo__main_container);
-                        find_toggle(this, $todo_list__add_single_todo__add_btn);
-                    })
-
-                    $add_single_todo__main_container__add_btn.click(function(){
-                        $(this).closest('.todo-list').find($todo_list__all_todos).prepend('<div class="all-todos__single-todo border-2 rounded-md border-white shadow-2xl px-4 py-2 bg-white mb-4 cursor-pointer"><p></p></div>');
-                        var a = $(this).closest('.todo-list').find($('.add-single-todo__main-container .main-container__description')).val();
-                        $(this).closest('.todo-list').find($('.all-todos__single-todo p')).text(a);
-                    })
-                    const sortable = new Draggable.Sortable(document.querySelectorAll('.todo-list__all-todos'), {
-                        draggable: '.all-todos__single-todo'
-                    });
-                }
-            })
-           
-
-        })
-
-        find_toggle = ($this,$val) => {
-            $($this).closest('.todo-list__add-single-todo').find($val).toggleClass('hidden');
-        }
-        toggle = ($val) => {
-            $($val).toggleClass('hidden');
-        }
-
-
-        
-        
-
-        
-    </script>
+    <script src="/assets/js/main.js"></script>
+    <script src="/assets/js/functions.js"></script>
+    <script src="/assets/js/load_template.js"></script>
 </body>
 </html>
