@@ -4,7 +4,7 @@
     height: 100vh;
     padding: 0 20px;
 }
-.main-container>div{
+.main-container__all-lists>div,.main-container__add-new-list{
     min-width:18rem;
     height: 89vh;        
 }
@@ -43,10 +43,10 @@ input[type=text], textarea{
 
         .all-todos__single-todo{
             background-color: rgba(255, 255, 255, 0.5);
-                transition: 0.3s all;
-                &:hover{
-                    background-color: rgba(255, 255, 255, 1);
-                }
+            transition: 0.3s all;
+            &:hover{
+                background-color: rgba(255, 255, 255, 1);
+            }
         }
     }
 

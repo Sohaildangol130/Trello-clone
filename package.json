@@ -2,9 +2,13 @@
   "name": "trello",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "dependencies": {
     "autoprefixer": "^10.2.1",
+    "jquery": "^3.5.1",
+    "jquery.loadtemplate": "^1.5.10",
     "script-loader": "^0.7.2",
+    "select2": "^4.0.13",
     "style-loader": "^2.0.0",
     "tailwindcss": "^2.0.2"
   },
@@ -18,8 +22,7 @@
     "webpack-dev-server": "^3.11.2"
   },
   "scripts": {
-    "build:css": "tailwind build src/tailwind.css -o assets/css/tailwind.css",
-    "build": "webpack"
+    "build:css": "tailwind build src/tailwind.css -o assets/css/tailwind.css"
   },
   "repository": {
     "type": "git",

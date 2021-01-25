@@ -1,3 +1,1 @@
-import './functions'
-import './load_template'
-import './main'
+import 'select2';
